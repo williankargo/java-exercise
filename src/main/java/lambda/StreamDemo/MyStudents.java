@@ -1,4 +1,4 @@
-package StreamDemo;
+package lambda.StreamDemo;
 
 public class MyStudents {
 

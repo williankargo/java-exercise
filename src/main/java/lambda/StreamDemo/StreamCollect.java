@@ -1,4 +1,4 @@
-package StreamDemo;
+package lambda.StreamDemo;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -24,7 +24,7 @@ public class StreamCollect {
 
         //method2(simple)
         list = Stream.of(names).collect(Collectors.toList());
-        System.out.println(list);
+        System.out.println("list" + list);
 
         //3 Set
         Set<String> set = Stream.of(names).map(e -> e.toUpperCase()).collect(Collectors.toSet());

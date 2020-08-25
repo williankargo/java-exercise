@@ -1,4 +1,4 @@
-package StreamDemo;
+package lambda.StreamDemo;
 
 import java.util.TreeMap;
 import java.util.stream.Collectors;
