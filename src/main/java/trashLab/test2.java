@@ -1,18 +1,25 @@
 package trashLab;
 
-import java.util.ArrayList;
 
-public class test2 {
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
+public class test2{
     public static void main(String[] args) {
-        ArrayList a = new ArrayList();
+        String target = "trashLab";
+        Path pFromBasic = Paths.get("/Users/pinkuan/IdeaProjects/java-exercise/src/main/java");
+        Path pTo = Paths.get("/Users/pinkuan/IdeaProjects/java-exercise/src/main/java/Test");
 
-        a.add(1);
-        a.add(2);
-        a.add(3);
-
-        System.out.println(a);
-
+        try {
+            Path mv = Files.move(pFromBasic.resolve(target), pTo.resolve(target),StandardCopyOption.REPLACE_EXISTING);
+            //Files.delete(mv);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
 }
 
