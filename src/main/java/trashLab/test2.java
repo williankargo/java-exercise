@@ -1,25 +1,27 @@
 package trashLab;
 
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class test2{
+class GetThread implements Runnable {
+    private static AtomicInteger counter = new AtomicInteger(0);
+
+    public void run() {
+        int c = counter.incrementAndGet();
+        System.out.print(c + " ");
+    }
+}
+
+public class test2 {
     public static void main(String[] args) {
-        String target = "trashLab";
-        Path pFromBasic = Paths.get("/Users/pinkuan/IdeaProjects/java-exercise/src/main/java");
-        Path pTo = Paths.get("/Users/pinkuan/IdeaProjects/java-exercise/src/main/java/Test");
+        Thread t1 = new Thread(new GetThread());
+        Thread t2 = new Thread(new GetThread());
+        Thread t3 = new Thread(new GetThread());
 
-        try {
-            Path mv = Files.move(pFromBasic.resolve(target), pTo.resolve(target),StandardCopyOption.REPLACE_EXISTING);
-            //Files.delete(mv);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Thread[] threads = {t1, t2, t3};
+        for (Thread t : threads) {
+            t.start();
         }
     }
-
-
 }
 
