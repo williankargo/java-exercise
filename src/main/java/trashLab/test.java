@@ -1,38 +1,17 @@
 package trashLab;
 
-
-import onedimensionalarray.Copy;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class test {
-    static ArrayList<String> arr = new ArrayList<>();
-
-    static void test() {
-        String var = "";
-        Iterator<String> e = arr.iterator();
-        while (e.hasNext()) {
-            var = e.next();
-            if (var.equals("A")) {
-                arr.remove(var);
-            }
-        }
-    }
-
-
     public static void main(String[] args) {
-        ArrayList<String> list1 = new ArrayList<>();
-        list1.add("A");
-        list1.add("B");
-        list1.add("C");
-        arr.addAll(list1);
-
-        test();
-        for (String var : arr) {
-            System.out.print(var + " ");
-        }
+        Function<Integer, Integer> mapper = n -> 2 * n;
+        Stream<Integer> mapResult = Stream.of(1,2,3,4).map(mapper);
+        Object[] arr = mapResult.toArray();
+        List<Object> list = Arrays.asList(arr);
+        System.out.println(list);
     }
 }
 
